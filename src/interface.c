@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// Basic UI
 
 int main (void) {
   // string for user input
