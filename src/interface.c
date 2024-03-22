@@ -17,6 +17,12 @@ int main (void) {
   printf("%s", user_input);
   */
   char test_letter = ' ';
+  printf("int space_char return value with test c = ' '\nReturn: %d\n", space_char(test_letter));
 
-  printf("int space_char return value with test c = ' '\nReturn: %d", space_char(test_letter));
+  test_letter = '\t';
+  printf("int space_char return value with test c = '\t'\nReturn: %d\n", space_char(test_letter));
+
+  test_letter = 'y';
+  printf("int space_char return value with test c = 'y'\nReturn: %d\n", space_char(test_letter));
+
 }
