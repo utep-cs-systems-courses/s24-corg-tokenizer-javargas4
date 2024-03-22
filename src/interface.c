@@ -1,18 +1,22 @@
+#include "tokenizer.h"
 #include <stdio.h>
 
 // Basic UI
-
 int main (void) {
+  /*
   // string for user input
-  char userInput[50];
+  char user_input[50];
 
   // print input indicator
   printf("$ ");
   
   // get user input
-  fgets(userInput, sizeof(userInput), stdin);
+  fgets(user_input, sizeof(user_input), stdin);
 
   // print user input
-  printf("%s", userInput);
-  
+  printf("%s", user_input);
+  */
+  char test_letter = ' ';
+
+  printf("int space_char return value with test c = ' '\nReturn: %d", space_char(test_letter));
 }
