@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//Test
 
 // function to test test_space_char
 void test_space_char () {
@@ -58,7 +57,7 @@ void test_non_space_char () {
   
 }
 // function to test *token_start
-void test_token_start() {
+void test_token_start () {
   // test cases for *token_start
   char *test_str1 = "   Leading spaces";
   char *test_str2 = "NoLeadingSpaces";
@@ -98,7 +97,7 @@ void test_token_start() {
 }
 
 // function to test *token_terminator
-void test_token_terminator() {
+void test_token_terminator () {
   // test cases for *token_terminator
   char *test_str1 = "Token1 Token2";
   char *test_str2 = "AToken";
@@ -133,7 +132,7 @@ void test_token_terminator() {
 }
 
 // function to test count_tokens
-void test_count_tokens() {
+void test_count_tokens () {
   // test cases for count_tokens
   char *test_str1 = "I am testing this string";
   char *test_str2 = "OnlyOneToken";
@@ -142,6 +141,7 @@ void test_count_tokens() {
   char *test_str5 = "          "; 
   char *test_str6 = "";
 
+  // print test case output
   printf("count_tokens with test string: \"%s\"\nTokens: %d\n",
 	 test_str1, count_tokens(test_str1));
 
@@ -164,6 +164,35 @@ void test_count_tokens() {
 
 }
 
+// function to test *copy_str
+void test_copy_str () {
+  // test cases for copy_str
+  char *test_str1 = "Hillo, World!";
+  int len1 = 2;
+
+  char *test_str2 = "Test string";
+  int len2 = 4;
+
+  char *test_str3 = "QWERTYuiop";
+  int len3 = 6;
+
+  // printing results for each test case
+  char *copy_str1 = copy_str(test_str1, len1);
+  printf("Original string: \"%s\"\nCopied string (%d chars): \"%s\"\n\n",
+	 test_str1, len1, copy_str1);
+
+  char *copy_str2 = copy_str(test_str2, len2);
+  printf("Original string: \"%s\"\nCopied string (%d chars): \"%s\"\n\n",
+	 test_str2, len2, copy_str2);
+
+  char *copy_str3 = copy_str(test_str3, len3);
+  printf("Original string: \"%s\"\nCopied string (%d chars): \"%s\"\n\n",
+	 test_str3, len1, copy_str3);
+
+  printf("\n");
+  
+}
+
 // Basic UI
 int main (void) {
   /*
@@ -184,4 +213,5 @@ int main (void) {
   test_token_start();
   test_token_terminator();
   test_count_tokens();
+  test_copy_str();
 }

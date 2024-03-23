@@ -6,6 +6,7 @@
 /* Return true (non-zero) if c is a whitespace character
    ('\t' or ' ').
    Zero terminators are not printable (therefore false) */
+
 int space_char (char c) {
   // check if ' ' or '\t'
   return c == ' ' || c == '\t';
@@ -15,7 +16,8 @@ int space_char (char c) {
 
 /* Return true (non-zero) if c is a non-whitespace 
    character (not tab or space).  
-   Zero terminators are not printable (therefore false) */ 
+   Zero terminators are not printable (therefore false) */
+
 int non_space_char (char c) {
   // check if ' ' or '\t' or '\0'
   return c != ' ' && c != '\t' && c != '\0';
@@ -26,6 +28,7 @@ int non_space_char (char c) {
 /* Returns a pointer to the first character of the next 
    space-separated token in zero-terminated str.  Return a zero pointer if 
    str does not contain any tokens. */
+
 char *token_start (char *str) {
   // check each character until end of line '\0'
   while (*str != '\0') {
@@ -38,10 +41,12 @@ char *token_start (char *str) {
   }
   // return zero pointer if str has no tokens
   return NULL;
+  
 }
 
 
 /* Returns a pointer terminator char following *token */
+
 char *token_terminator (char *token) {
   // move to next character as long as null terminator not hit and
   // the current character is not a whitespace
@@ -50,10 +55,12 @@ char *token_terminator (char *token) {
   }
   // return the pointer for the current character, either whitespace or '\0'
   return token;
+  
 }
 
 
 /* Counts the number of tokens in the string argument. */
+
 int count_tokens(char *str) {
   int count = 0;
   char *start = NULL;
@@ -86,3 +93,26 @@ int count_tokens(char *str) {
 
 }
 
+
+/* Returns a fresly allocated new zero-terminated string 
+   containing <len> chars from <inStr> */
+
+char *copy_str(char *inStr, short len) {
+  // memory allocation for length of characters and null terminator
+  char *newStr = malloc(len + 1);
+
+  // checks if memory allocation was successful
+  if (newStr == NULL) {
+    return NULL;
+  }
+
+  // copy len characters from inStr to newStr
+  for (int i = 0; i < len; i++) {
+    newStr[i] = inStr[i];
+  }
+
+  // null-terminate the new string
+  newStr[len] = '\0';
+
+  return newStr;
+}
