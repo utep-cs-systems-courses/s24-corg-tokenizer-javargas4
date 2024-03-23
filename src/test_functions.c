@@ -194,6 +194,7 @@ void test_copy_str () {
   
 }
 
+// function to test tokenize
 void test_tokenize () {
   // test cases for tokenize
   char *test_str1 = "This is a test";
@@ -236,3 +237,37 @@ void test_tokenize () {
   run_tokenize_test(test_str6);
 
 }
+
+// function to test print_tokens
+void test_print_tokens () {
+  // test case 1: tokens
+  char *test_case1[] = {"Hello", "World", NULL};
+  
+  // test case 2: single token
+  char *test_case2[] = {"SingleToken", NULL};
+  
+  // test case 3: empty string as token
+  char *test_case3[] = {"", NULL};
+  
+  // test case 4: mixed characters
+  char *test_case4[] = {"123", "abc", "!@#", NULL};
+
+  //printing tokens for each test case
+  printf("Test Case 1: Tokens\n");
+  print_tokens(test_case1);
+  printf("\n");
+
+  printf("Test Case 2: Single token\n");
+  print_tokens(test_case2);
+  printf("\n");
+
+  printf("Test Case 3: Empty string\n");
+  print_tokens(test_case3);
+  printf("\n");
+
+  printf("Test Case 4: Mixed characters\n");
+  print_tokens(test_case4);
+  printf("\n");
+
+}
+

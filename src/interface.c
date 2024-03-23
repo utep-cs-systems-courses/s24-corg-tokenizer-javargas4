@@ -23,5 +23,6 @@ int main (void) {
   //test_token_terminator();
   //test_count_tokens();
   //test_copy_str();
-  test_tokenize();
+  //test_tokenize();
+  test_print_tokens();
 }

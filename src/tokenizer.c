@@ -61,7 +61,7 @@ char *token_terminator (char *token) {
 
 /* Counts the number of tokens in the string argument. */
 
-int count_tokens(char *str) {
+int count_tokens (char *str) {
   int count = 0;
   char *start = NULL;
   char *end = NULL;
@@ -97,7 +97,7 @@ int count_tokens(char *str) {
 /* Returns a fresly allocated new zero-terminated string 
    containing <len> chars from <inStr> */
 
-char *copy_str(char *inStr, short len) {
+char *copy_str (char *inStr, short len) {
   // memory allocation for length of characters and null terminator
   char *newStr = malloc(len + 1);
 
@@ -129,7 +129,7 @@ char *copy_str(char *inStr, short len) {
      tokens[3] = 0
 */
 
-char **tokenize(char* str) {
+char **tokenize (char* str) {
   // count num of tokens in string
   int num_tokens = count_tokens(str);
 
@@ -178,5 +178,19 @@ char **tokenize(char* str) {
   
 }
 
+/* Prints all tokens. */
+void print_tokens (char **tokens) {
+  /* handling the case tokenize might return NULL
+     due to failed memory allocation */
+  if (tokens == NULL) {
+    printf("No tokens to print.\n");
+    return;
+    
+  }
 
-
+  // print each token 
+  for (int i = 0; tokens[i] != NULL; i++) {
+    printf("Token[%d]: %s\n", i, tokens[i]);
+  }
+  
+}
