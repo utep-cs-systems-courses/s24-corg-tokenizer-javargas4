@@ -193,3 +193,46 @@ void test_copy_str () {
   printf("\n");
   
 }
+
+void test_tokenize () {
+  // test cases for tokenize
+  char *test_str1 = "This is a test";
+  char *test_str2 = "   Leading spaces";
+  char *test_str3 = "Trailing spaces   ";
+  char *test_str4 = "  Spaces  both  ends ";
+  char *test_str5 = "";
+  char *test_str6 = "NoSpaces";
+
+  // function to run tokenize and print the results
+  void run_tokenize_test (char *str) {
+    // tokenize the string 
+    char **tokens = tokenize(str);
+    printf("Testing tokenize with input: \"%s\"\n", str);
+
+    // iterate thru array if not NULL
+    if (tokens) {
+      // print tokens untill end of string
+      for (int i = 0; tokens[i] != NULL; i++) {
+	printf("Token[%d]: \"%s\"\n", i, tokens[i]);
+	free(tokens[i]); // freeing each token
+
+      }
+      free(tokens); // freeing the array of tokens
+
+    } else {
+      printf("No tokens found or memory allocation failed.\n");
+
+    }
+    printf("\n");
+
+  }
+
+  // running test cases
+  run_tokenize_test(test_str1);
+  run_tokenize_test(test_str2);
+  run_tokenize_test(test_str3);
+  run_tokenize_test(test_str4);
+  run_tokenize_test(test_str5);
+  run_tokenize_test(test_str6);
+
+}

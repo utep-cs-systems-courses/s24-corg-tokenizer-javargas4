@@ -17,10 +17,11 @@ int main (void) {
   // print user input
   printf("%s", user_input);
   */
-  test_space_char();
-  test_non_space_char();
-  test_token_start();
-  test_token_terminator();
-  test_count_tokens();
-  test_copy_str();
+  //test_space_char();
+  //test_non_space_char();
+  //test_token_start();
+  //test_token_terminator();
+  //test_count_tokens();
+  //test_copy_str();
+  test_tokenize();
 }

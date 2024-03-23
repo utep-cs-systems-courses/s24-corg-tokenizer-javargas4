@@ -115,4 +115,68 @@ char *copy_str(char *inStr, short len) {
   newStr[len] = '\0';
 
   return newStr;
+  
 }
+
+
+/* Returns a freshly allocated zero-terminated vector of freshly allocated 
+   space-separated tokens from zero-terminated str.
+
+   For example, tokenize("hello world string") would result in:
+     tokens[0] = "hello"
+     tokens[1] = "world"
+     tokens[2] = "string" 
+     tokens[3] = 0
+*/
+
+char **tokenize(char* str) {
+  // count num of tokens in string
+  int num_tokens = count_tokens(str);
+
+  // create array to store tokens and NULL terminator, allocate memory
+  char **tokens = malloc(sizeof(char*) * (num_tokens + 1));
+
+  // check if memory allocation successful
+  if (tokens == NULL) {
+    return NULL;
+  }
+
+  // variables to keep track of tokens
+  char *start = NULL;
+  char *end = NULL;
+  int i = 0;
+
+  // iterate thru the string until end of string
+  while (*str != '\0') {
+    // get start of token
+    start = token_start(str);
+
+    // break if no tokens remain
+    if (start == NULL) {
+      break;
+    }
+
+    // get end of token
+    end = token_terminator(start);
+
+    // calculate token length, subtract memory addresses
+    int token_length = end - start;
+
+    // copy token over to the token array 
+    tokens[i] = copy_str(start, token_length);
+    i++;
+
+    // advance str to next character after end if not end of string
+    str = *end ? end + 1 : end;
+    
+  }
+
+  // NULL-terminating the array
+  tokens[num_tokens] = 0;
+
+  return tokens;
+  
+}
+
+
+

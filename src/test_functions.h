@@ -8,7 +8,7 @@ void test_token_start();
 void test_token_terminator();
 void test_count_tokens();
 void test_copy_str();
-
+void test_tokenize();
 
 #endif 
 
