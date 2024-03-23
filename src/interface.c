@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//Test
+
 // function to test test_space_char
 void test_space_char () {
   // test cases for space_char
