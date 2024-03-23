@@ -194,3 +194,20 @@ void print_tokens (char **tokens) {
   }
   
 }
+
+/* Frees all tokens and the vector containing them. */
+void free_tokens(char **tokens) {
+  // nothing to free if tokens array is NULL
+  if (tokens == NULL) {
+    return;
+  }
+
+  // free each token in the array
+  for (int i = 0; tokens[i] != NULL; i++) {
+    free(tokens[i]);
+  }
+
+  // free the array after freeing individual tokens
+  free(tokens);
+
+}
