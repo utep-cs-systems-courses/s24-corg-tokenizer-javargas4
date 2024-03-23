@@ -2,44 +2,89 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// function to test test_space_char
 void test_space_char () {
-  char test_letter = ' ';
-  printf("int space_char return value with test c = ' '\nReturn: %d\n", space_char(test_letter));
+  char test_char1 = ' ';
+  char test_char2 = '\t';
+  char test_char3 = 'a';
+  char test_char4 = 'A';
 
-  test_letter = '\t';
-  printf("int space_char return value with test c = '\\t'\nReturn: %d\n", space_char(test_letter));
+  printf("space_char return value with test c = '%c'\nReturn: %d\n",
+	 test_char1, space_char(test_char1));
 
-  test_letter = 'a';
-  printf("int space_char return value with test c = 'a'\nReturn: %d\n", space_char(test_letter));
+  printf("space_char return value with test c = '\\t'\nReturn: %d\n",
+	 space_char(test_char2));
 
-  test_letter = 'A';
-  printf("int space_char return value with test c = 'A'\nReturn: %d\n", space_char(test_letter));
+  printf("space_char return value with test c = '%c'\nReturn: %d\n",
+	 test_char3, space_char(test_char3));
+
+  printf("space_char return value with test c = '%c'\nReturn: %d\n",
+	 test_char4, space_char(test_char4));
 
 }
 
+// function to test non_space_char
 void test_non_space_char () {
-  char test_letter = ' ';
-  printf("int non_space_char return value with test c = ' '\nReturn: %d\n",
-	 non_space_char(test_letter));
+  // test cases for non_space_char
+  char test_char1 = ' ';
+  char test_char2 = '\t';
+  char test_char3 = '\0';
+  char test_char4 = 'a';
+  char test_char5 = 'A';
+  
+  printf("non_space_char return value with test c = '%c'\nReturn: %d\n",
+	 test_char1, non_space_char(test_char1));
 
-  test_letter = '\t';
-  printf("int non_space_char return value with test c = '\\t'\nReturn: %d\n",
-	 non_space_char(test_letter));
+  printf("non_space_char return value with test c = '\\t'\nReturn: %d\n",
+	 non_space_char(test_char2));
 
-  test_letter = '\0';
-  printf("int non_space_char return value with test c = '\\0'\nReturn: %d\n",
-	 non_space_char(test_letter));
+  printf("non_space_char return value with test c = '\\0'\nReturn: %d\n",
+	 non_space_char(test_char3));
 
-  test_letter = 'a';
-  printf("int non_space_char return value with test c = 'a'\nReturn: %d\n",
-	 non_space_char(test_letter));
+  printf("non_space_char return value with test c = '%c'\nReturn: %d\n",
+	 test_char4, non_space_char(test_char4));
 
-  test_letter = 'A';
-  printf("int non_space_char return value with test c = 'A'\nReturn: %d\n",
-	 non_space_char(test_letter));
+  printf("non_space_char return value with test c = '%c'\nReturn: %d\n",
+	 test_char5, non_space_char(test_char5));
 
 }
+// function to test *token_start
+void test_token_start() {
+  // making some test strings
+  char *test_str1 = "   Leading spaces";
+  char *test_str2 = "NoLeadingSpaces";
+  char *test_str3 = "\t\t\tTabbed\tstring";
+  char *test_str4 = "     "; // Only spaces
+  char *test_str5 = ""; // Empty string
 
+  // dereferencing result to access the character directly
+  char *result;
+
+  // running test strings, returning '0' if non-whitespace char doesnt
+  // exist to match type of *result
+  result = token_start(test_str1);
+  printf("token_start with test string: \"%s\"\nResult: %c\n",
+	 test_str1, result ? *result : '0');
+
+  result = token_start(test_str2);
+  printf("token_start with test string: \"%s\"\nResult: %c\n",
+	 test_str2, result ? *result : '0');
+
+  result = token_start(test_str3);
+  printf("token_start with test string: \"%s\"\nResult: %c\n",
+	 test_str3, result ? *result : '0');
+
+  result = token_start(test_str4);
+  printf("token_start with test string: \"%s\"\nResult: %s\n",
+	 test_str4, result ? "Found non-whitespace character" :
+	 "No non-whitespace character found");
+
+  result = token_start(test_str5);
+  printf("token_start with test string: \"%s\"\nResult: %s\n",
+	 test_str5, result ? "Found non-whitespace character" :
+	 "No non-whitespace character found");
+
+}
 
 // Basic UI
 int main (void) {
@@ -59,4 +104,7 @@ int main (void) {
   test_space_char();
   printf("\n");
   test_non_space_char();
+  printf("\n");
+  test_token_start();
+  printf("\n");
 }
