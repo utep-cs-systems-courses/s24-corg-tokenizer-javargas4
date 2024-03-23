@@ -22,10 +22,11 @@ int non_space_char (char c) {
 
 }
 
+
 /* Returns a pointer to the first character of the next 
    space-separated token in zero-terminated str.  Return a zero pointer if 
    str does not contain any tokens. */
-char *token_start(char *str) {
+char *token_start (char *str) {
   // check each character until end of line '\0'
   while (*str != '\0') {
     // check if non-whitespace char, returns first non-whitespace char
@@ -39,8 +40,9 @@ char *token_start(char *str) {
   return NULL;
 }
 
+
 /* Returns a pointer terminator char following *token */
-char *token_terminator(char *token) {
+char *token_terminator (char *token) {
   // move to next character as long as null terminator not hit and
   // the current character is not a whitespace
   while (*token != '\0' && !space_char(*token)) {
@@ -50,4 +52,37 @@ char *token_terminator(char *token) {
   return token;
 }
 
+
+/* Counts the number of tokens in the string argument. */
+int count_tokens(char *str) {
+  int count = 0;
+  char *start = NULL;
+  char *end = NULL;
+
+  // iterate thru string till end of string
+  while (*str != '\0') {
+    // get start of token
+    start = token_start(str);
+
+    // break loop if start is NULL, end of string reached
+    if (start == NULL) {
+      break;
+    }
+
+    // get end of this token
+    end = token_terminator(start);
+
+    // increment counted tokens
+    count++;
+
+    /* move to end of current token for next iteration if end
+       doesn't point to '\0'*/
+    str = *end ? end + 1 : end;
+
+  }
+
+  // return token count
+  return count;
+
+}
 
