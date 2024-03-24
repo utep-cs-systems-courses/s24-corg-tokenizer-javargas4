@@ -1,3 +1,4 @@
+#include "history.h"
 #include "tokenizer.h"
 #include "test_functions.h"
 #include <stdio.h>
