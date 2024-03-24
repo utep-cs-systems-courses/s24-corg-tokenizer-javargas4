@@ -8,7 +8,7 @@ all: mytokenizer
 tokenizer.o: tokenizer.h
 interface.o: tokenizer.h test_functions.h history.h
 test_functions.o: tokenizer.h test_functions.h
-history.o: history.h
+history.o: history.h tokenizer.h
 
 # $@=target, $^=prerequisites
 mytokenizer: tokenizer.o interface.o test_functions.o history.o

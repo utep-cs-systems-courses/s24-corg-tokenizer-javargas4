@@ -1,4 +1,5 @@
 #include "history.h"
+#include "tokenizer.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -18,3 +19,67 @@ List* init_history () {
   return list;
   
 }
+
+/* Add a history item to the end of the list.
+   List* list - the linked list
+   char* str - the string to store */
+void add_history(List *list, char *str) {
+  // calculate length of the string
+  int len = 0;
+  while (str[len] != '\0') {
+    len++;
+    
+  }
+  
+  // allocate memory for a new item
+  Item *new_item = (Item *)malloc(sizeof(Item));
+
+  // check if memory allocation successful
+  if (new_item == NULL) {
+    fprintf(stderr, "Failed to allocate memory for new history item.\n");
+    return;
+
+  }
+
+  // copy the string into the new item using copy_str
+  new_item->str = copy_str(str, len); 
+  new_item->next = NULL; 
+
+  // if list is empty, this item becomes the new root
+  if (list->root == NULL) {
+    new_item->id = 1;
+    list->root = new_item;
+    
+  } else {
+    // otherwise, find the last item and append this item to it
+    Item *current = list->root;
+    int id = 1;
+
+    // traverse the list, increment id
+    while (current->next != NULL) {
+      current = current->next;
+      id++;
+      
+    }
+    // set id number and value of node
+    new_item->id = id + 1;
+    current->next = new_item;
+
+  }
+
+}
+
+// print linked list, for testing
+void print_history(List *list) {
+  // point to first item
+  Item *current = list->root;
+
+  // traverse list til end
+  while (current != NULL) {
+    // print string contents
+    printf("ID: %d, String: %s\n", current->id, current->str);
+    current = current->next;
+
+  }
+}
+
