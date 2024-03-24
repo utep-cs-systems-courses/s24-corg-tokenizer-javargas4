@@ -41,21 +41,5 @@ int main (void) {
     printf("Failed to read input.\n");
 
   }
-
-  // initialize the history list
-  List *history = init_history();
-
-  if (history == NULL) {
-    fprintf(stderr, "Failed to initialize history.\n");
-  }
-
-  // add some items to the history
-  add_history(history, "First entry");
-  add_history(history, "Second entry");
-  add_history(history, "Third entry");
-
-
-  // print the history to verify
-  print_history(history);
   
 }
