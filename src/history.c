@@ -117,3 +117,37 @@ void print_history(List *list) {
   
 }
 
+
+/* Free the history list and the strings it references. */
+
+void free_history(List *list) {
+  // check is list is NULL
+  if (list == NULL) {
+    return;
+  }
+
+  // pointer to traverse the list
+  Item *current = list->root;
+  Item *temp;
+  
+  // traverse the list and free each item and its string
+  while (current != NULL) {
+    // save next item
+    temp = current->next;
+
+    // free string in current item
+    free(current->str);
+
+    // free the current item itself
+    free(current);
+
+    // move to the next item
+    current = temp;
+
+  }
+  // free the list structure itself
+  free(list);
+
+}
+
+
