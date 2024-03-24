@@ -5,6 +5,7 @@
 
 
 /* Initialize the linked list to keep the history. */
+
 List* init_history () {
   // allocating memory for list structure
   List *list = (List*)malloc(sizeof(List));
@@ -20,9 +21,11 @@ List* init_history () {
   
 }
 
+
 /* Add a history item to the end of the list.
    List* list - the linked list
    char* str - the string to store */
+
 void add_history(List *list, char *str) {
   // calculate length of the string
   int len = 0;
@@ -38,7 +41,6 @@ void add_history(List *list, char *str) {
   if (new_item == NULL) {
     fprintf(stderr, "Failed to allocate memory for new history item.\n");
     return;
-
   }
 
   // copy the string into the new item using copy_str
@@ -69,7 +71,38 @@ void add_history(List *list, char *str) {
 
 }
 
-// print linked list, for testing
+
+/* Retrieve the string stores in the node where Item->id == id.
+   List* list - the linked list
+   int id - the id of the Item to find */
+
+char *get_history(List *list, int id) {
+  // check list is NULL or empty
+  if (list == NULL || list->root == NULL) {
+    return NULL;
+  }
+
+  // pointer to traverse the list
+  Item *current = list->root;
+
+  // traverse the list til the end is reached or a matching id is found
+  while (current != NULL) {
+    // return Item string if matching id is found
+    if (current->id == id) {
+      return current->str;    
+    }
+    // proceed to next item in list
+    current = current->next; 
+  }
+  
+  // return NULL if item is not found
+  return NULL;
+
+}
+
+
+/* Print the entire contents of the list. */
+
 void print_history(List *list) {
   // point to first item
   Item *current = list->root;
@@ -81,5 +114,6 @@ void print_history(List *list) {
     current = current->next;
 
   }
+  
 }
 

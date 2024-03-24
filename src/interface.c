@@ -57,5 +57,5 @@ int main (void) {
 
   // print the history to verify
   print_history(history);
-
+  
 }
