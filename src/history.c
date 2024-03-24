@@ -110,7 +110,7 @@ void print_history(List *list) {
   // traverse list til end
   while (current != NULL) {
     // print string contents
-    printf("ID: %d, String: %s\n", current->id, current->str);
+    printf("%d. %s\n", current->id, current->str);
     current = current->next;
 
   }

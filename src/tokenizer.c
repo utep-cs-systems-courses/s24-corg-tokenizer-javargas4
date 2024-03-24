@@ -190,7 +190,7 @@ void print_tokens (char **tokens) {
 
   // print each token 
   for (int i = 0; tokens[i] != NULL; i++) {
-    printf("Token[%d]: %s\n", i, tokens[i]);
+    printf("%s\n", tokens[i]);
   }
   
 }
